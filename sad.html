@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ถึงภูเพื่อนรัก 💌</title>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #a8dadc, #f1faee, #457b9d, #e0fbfc);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            color: #333;
+            text-align: center;
+            padding: 30px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .page {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* สไตล์สำหรับหน้าต้อนรับ */
+        #welcome-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            display: block;
+        }
+
+        #welcome-page h1 {
+            color: #e63946;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        #welcome-page img {
+            max-width: 80%;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        #welcome-page img:hover {
+            transform: scale(1.05);
+        }
+
+        /* สไตล์สำหรับหน้าเนื้อหาหลัก */
+        #main-page {
+            display: none;
+        }
+
+        h1, h2 {
+            color: #1d3557;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .message-box {
+            background-color: #fefae0;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #e9c46a;
+            text-align: left;
+        }
+
+        .message-box p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #4a4a4a;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #e63946;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .button:hover {
+            background-color: #c9184a;
+        }
+
+        .heart {
+            color: #e63946;
+            font-size: 1.5em;
+            margin-left: 5px;
+            vertical-align: middle;
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        .youtube-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* **แก้ไขส่วนนี้: CSS สำหรับ Slideshow เพื่อแก้ปัญหารูปภาพยาวเกินไป** */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+        .slides-wrapper {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+        .slides-wrapper img {
+            width: 100%;
+            height: 300px; /* กำหนดความสูงที่แน่นอน */
+            object-fit: cover; /* ครอปภาพให้เต็มพื้นที่โดยไม่เสียสัดส่วน */
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="welcome-page" class="page active">
+        <h1>ส่งสิ่งนี้มาให้ภูนะ</h1>
+      <img src="https://img5.pic.in.th/file/secure-sv1/1753919882015.jpg" alt="รูปภาพต้อนรับ">
+        <button class="button" onclick="showMainPage()">กดที่นี่เพื่อเปิดดู ❤️</button>
+    </div>
+
+    <div id="main-page" class="page">
+        <h1>ส่งกำลังใจให้ภูนะ! <span class="heart">💖</span></h1>
+
+        <div class="message-box">
+            <p>จากเปรม😎</p>
+            <p>เรารู้ว่าภูตอนนี้อาจจะรู้สึกหนักหน่วงและสับสน แต่ขอให้เชื่อมั่นว่าทุกความรู้สึกมีเวลาของมันนะ</p>
+            <p>ภูเข้มแข็งกว่าที่ภูคิดเสมอ และอยู่ตรงนี้เพื่อเป็นกำลังใจให้ภูก้าวผ่านช่วงเวลานี้ไปได้</p>
+            <p>ไม่ต้องรีบร้อนที่จะหายดี ค่อยๆ ให้เวลาตัวเองได้เยียวยา ความเสียใจไม่ใช่เรื่องผิด และการร้องไห้ก็ไม่ใช่ความอ่อนแอ</p>
+            <p>จำไว้ว่าภูมีค่าและเป็นที่รักเสมอ ไม่ว่าอะไรจะเกิดขึ้น</p>
+        </div>
+
+        <div class="slideshow-container">
+            <div class="slides-wrapper" id="slideshow">
+                <img src="https://img2.pic.in.th/pic/1753964618068.jpg" alt="ภาพให้กำลังใจ 1">
+                <img src="https://img5.pic.in.th/file/secure-sv1/received_1132016674542539.md.jpeg" alt="ภาพให้กำลังใจ 2">
+                <img src="https://img2.pic.in.th/pic/1753964600094.md.jpg" alt="ภาพให้กำลังใจ 3">
+            </div>
+        </div>
+
+        <h2>เพลงพิเศษส่งให้ภู</h2>
+        <div class="youtube-container">
+            <iframe src="https://www.youtube.com/embed/ViZmg4WGqrE?si=R1Dk5B2IMxLw-p0K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+
+        <button class="button" onclick="alert('รักภูที่สุด! เราอยู่ข้างๆเพื่อนเสมอนะ ❤️')">กอดแน่นๆ จากเรา ❤️</button>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        let slideInterval;
+
+        function showMainPage() {
+            // ซ่อนหน้าต้อนรับ
+            document.getElementById('welcome-page').style.display = 'none';
+            // แสดงหน้าหลัก
+            document.getElementById('main-page').style.display = 'block';
+
+            // เริ่มสไลด์โชว์เมื่อหน้าหลักแสดงผล
+            startSlideshow();
+        }
+
+        function startSlideshow() {
+            const slides = document.getElementById('slideshow');
+            if (!slides) return;
+            const totalSlides = slides.children.length;
+
+            slideInterval = setInterval(() => {
+                slideIndex++;
+                if (slideIndex >= totalSlides) {
+                    slideIndex = 0;
+                }
+                slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+            }, 3000); // เปลี่ยนรูปภาพทุกๆ 3 วินาที
+        }
+    </script>
+</body>
+</html>
